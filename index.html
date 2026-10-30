@@ -201,7 +201,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 0}
       <div class="facts">
         <div class="glass fact reveal"><b>7+ years</b><span>building and supporting production .NET systems</span></div>
         <div class="glass fact reveal"><b>7 countries</b><span>using the payroll platform I work on</span></div>
-        <div class="glass fact reveal"><b>5 languages</b><span>English, Spanish, German, Italian and French support delivered</span></div>
+        <div class="glass fact reveal"><b>Multilingual</b><span>one application serving users in every region</span></div>
       </div>
     </div>
   </section>
@@ -215,7 +215,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 0}
         <ul>
           <li>Built core FEPS modules for work‑time capture, leave management and activity‑based costing (ABC) data.</li>
           <li>Designed the gross pay calculation logic and the data transfer to downstream payroll systems.</li>
-          <li>Delivered multilingual support in five languages so one application serves every region.</li>
+          <li>Delivered multilingual support so one application serves users in every region.</li>
           <li>Improved efficiency and data accuracy for international payroll processing.</li>
         </ul>
       </article>
@@ -253,11 +253,11 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 0}
         <div class="txt">
           <h3>FEPS: payroll and time tracking</h3>
           <div class="org">Conduent · used across seven countries</div>
-          <p>Work‑time capture, leave management and activity‑based costing modules, gross pay calculation and integration with downstream payroll systems, in five languages.</p>
+          <p>Work‑time capture, leave management and activity‑based costing modules, gross pay calculation and integration with downstream payroll systems, with multilingual support.</p>
           <div class="tags"><span class="tag">C#</span><span class="tag">ASP.NET Web Forms</span><span class="tag">.NET 4.8</span><span class="tag">SQL Server</span></div>
         </div>
         <div class="ledger" aria-label="Animated illustration: a weekly timesheet calculating gross pay">
-          <div class="hd"><b id="l-title">Weekly timesheet</b><span class="lang" id="lang">EN</span></div>
+          <div class="hd"><b id="l-title">Weekly timesheet</b></div>
           <table><thead><tr><th id="l-day">Day</th><th class="num" id="l-hrs">Hours</th></tr></thead><tbody id="rows"></tbody></table>
           <div class="sum"><span class="k" id="l-total">Total hours</span><span id="tot">0.0</span><span class="k" id="l-rate">Hourly rate</span><span>42.50</span><span class="k" id="l-gross">Gross pay</span><span class="g" id="gross">0.00</span></div>
           <div class="note"><span>Illustration of the logic I build</span><button type="button" id="replay">Replay</button></div>
@@ -400,15 +400,11 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 0}
     sk.forEach(function(s){s.classList.toggle("hide",f!=="all"&&s.dataset.c!==f)})})});
 
   /* ledger demo */
-  var L={EN:{t:"Weekly timesheet",day:"Day",hrs:"Hours",total:"Total hours",rate:"Hourly rate",gross:"Gross pay",d:["Mon","Tue","Wed","Thu","Fri"]},
-    ES:{t:"Hoja de horas semanal",day:"Día",hrs:"Horas",total:"Horas totales",rate:"Tarifa por hora",gross:"Salario bruto",d:["Lun","Mar","Mié","Jue","Vie"]},
-    DE:{t:"Wöchentlicher Stundenzettel",day:"Tag",hrs:"Stunden",total:"Gesamtstunden",rate:"Stundensatz",gross:"Bruttolohn",d:["Mo","Di","Mi","Do","Fr"]},
-    IT:{t:"Foglio ore settimanale",day:"Giorno",hrs:"Ore",total:"Ore totali",rate:"Tariffa oraria",gross:"Retribuzione lorda",d:["Lun","Mar","Mer","Gio","Ven"]},
-    FR:{t:"Feuille de temps hebdomadaire",day:"Jour",hrs:"Heures",total:"Total des heures",rate:"Taux horaire",gross:"Salaire brut",d:["Lun","Mar","Mer","Jeu","Ven"]}};
-  var order=["EN","ES","DE","IT","FR"],hrs=[8,8,7.5,8,6.5],rate=42.5,rows=document.getElementById("rows"),T=[],li=0;
+  var L={EN:{t:"Weekly timesheet",day:"Day",hrs:"Hours",total:"Total hours",rate:"Hourly rate",gross:"Gross pay",d:["Mon","Tue","Wed","Thu","Fri"]},};
+  var order=["EN"],hrs=[8,8,7.5,8,6.5],rate=42.5,rows=document.getElementById("rows"),T=[],li=0;
   function $(i){return document.getElementById(i)}
   function fmt(n){return n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})}
-  function setL(k){var t=L[k];$("lang").textContent=k;$("l-title").textContent=t.t;$("l-day").textContent=t.day;$("l-hrs").textContent=t.hrs;$("l-total").textContent=t.total;$("l-rate").textContent=t.rate;$("l-gross").textContent=t.gross;
+  function setL(k){var t=L[k];$("l-title").textContent=t.t;$("l-day").textContent=t.day;$("l-hrs").textContent=t.hrs;$("l-total").textContent=t.total;$("l-rate").textContent=t.rate;$("l-gross").textContent=t.gross;
     rows.querySelectorAll(".dn").forEach(function(td,i){td.firstChild.nodeValue=t.d[i]})}
   function at(ms,f){T.push(setTimeout(f,ms))}
   function run(){T.forEach(clearTimeout);T=[];rows.innerHTML="";
